@@ -76,3 +76,6 @@ mlagents_python/*
 
 # MacOS
 .DS_Store
+
+# Temp
+[Aa]ssets/TEMP
