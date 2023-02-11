@@ -7,6 +7,7 @@ using UnityEngine;
 public class AIViewDisplay : MonoBehaviour
 {
     [SerializeField] Agent agent;
+    [SerializeField] TMP_Text agentNameText;
     [SerializeField] TMP_Text observationText;
     [SerializeField] TMP_Text actionText;
     [SerializeField] TMP_Text rewardsText;
@@ -15,7 +16,20 @@ public class AIViewDisplay : MonoBehaviour
     [SerializeField] string[] discreteActionName;
     [SerializeField] string[] continuousActionName;
 
-    // Update is called once per frame
+
+    private string agentName = "Agent";
+    private void Awake()
+    {
+        if (agent && agent.TryGetComponent(out Unity.MLAgents.Policies.BehaviorParameters behaveParams))
+        {
+            agentName = behaveParams.BehaviorName;
+        }
+        if (agentNameText)
+        {
+            agentNameText.text = $"AI Viewer: {agentName}";
+        }
+    }
+
     void Update()
     {
         if (!agent) return;
@@ -35,7 +49,7 @@ public class AIViewDisplay : MonoBehaviour
         }
         if (actionText)
         {
-            actionText.text = "Observations:\n\t";
+            actionText.text = "Actions:\n";
             int aIndex = 0;
             foreach (var dActions in agent.GetStoredActionBuffers().DiscreteActions)
             {
