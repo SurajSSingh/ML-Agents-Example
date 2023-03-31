@@ -15,4 +15,4 @@ This is a template used for the Unity 4 Curriculum by [Coding Minds](https://cod
 3. Module-2: Prefabs for the complex environment and its script; used for Module 2 lessons.
 
 ## License
-This is released under the MIT License. See LICENSE.md
+This is released under the MIT License. See [LICENSE](./LICENSE) for details.
